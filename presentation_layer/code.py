@@ -1,2 +1,0 @@
-mkdir cli
-cd cli
