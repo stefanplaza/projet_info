@@ -1,0 +1,2 @@
+mkdir cli
+cd cli
