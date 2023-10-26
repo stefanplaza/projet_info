@@ -4,4 +4,4 @@ class TypeCarburant:
         self.nom_carburant = nom_carburant
         
 #il faudra rajouter une classe PrixCarburant je pense (les prix changent tout le temps donc galère)
-#cette classe pourait donc devenir TypeCarburant()
+#cette classe pourait donc devenir TypeCarburant (Fait)
