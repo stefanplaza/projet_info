@@ -1,0 +1,6 @@
+print("Quelle est votre adresse ?")
+x = input()
+print("Quelles sont les services que vous désirez ?")
+y = input()
+print("Quel est le type de caarburant souhaité ?")
+z = input()
