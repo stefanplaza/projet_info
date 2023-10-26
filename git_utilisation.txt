@@ -1,0 +1,8 @@
+git clone https 
+cd 
+git add fichier
+git commit -m "message"
+git remote add https
+
+git pull
+git push
