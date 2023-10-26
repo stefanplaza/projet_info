@@ -5,7 +5,7 @@ class Coordonnees:
         self.latitude = latitude
         self.longitude = longitude
 
-    def dist(self, autre):
+    def dist(self, autre : Coordonnees):
         # Convertir les latitudes et longitudes de degrés à radians
         lat1, lon1 = math.radians(self.latitude), math.radians(self.longitude)
         lat2, lon2 = math.radians(autre.latitude), math.radians(autre.longitude)
