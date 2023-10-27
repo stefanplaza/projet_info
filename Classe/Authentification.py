@@ -10,6 +10,9 @@ class Authentification:
         self._id_utilisateur = id_utilisateur
         self._mot_de_passe = mot_de_passe
 
+    def __str__(self):
+        return f"ID utilisateur: {self._id_utilisateur}, mot de passe : {self._mot_de_passe}"
+
     def compare(self, id_utilisateur, mot_de_passe):
         """
         Compare les noms d'utilisateur et les mots de passe pour vérifier l'authentification.
@@ -25,3 +28,6 @@ class Authentification:
             return True
         else:
             return False
+
+auth = Authentification("utilisateur123", "motdepasse123")
+print(auth)
