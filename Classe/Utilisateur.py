@@ -24,3 +24,6 @@ class Utilisateur:
         self._id_utilisateur = id_utilisateur
         self._nom_utilisateur = nom_utilisateur
         self._mot_de_passe = mot_de_passe
+
+    def __str__(self):
+        return f"ID utilisateur: {self._id_utilisateur}, Nom utilisateur: {self._nom_utilisateur}"

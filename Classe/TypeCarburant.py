@@ -12,3 +12,6 @@ class TypeCarburant:
         """
         self.id_carburant = id_carburant
         self.nom_carburant = nom_carburant
+
+    def __str__(self):
+        return f"ID carburant: {self.id_carburant}, Nom carburant: {self.nom_carburant}"

@@ -28,6 +28,3 @@ class Authentification:
             return True
         else:
             return False
-
-auth = Authentification("utilisateur123", "motdepasse123")
-print(auth)

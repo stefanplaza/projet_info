@@ -1,3 +1,5 @@
+from Classe.Coordonnees import Coordonnees
+
 class Station:
     def __init__(
         self,
@@ -45,6 +47,15 @@ class Station:
         self.coordonnees = coordonnees
         self.services = []
 
+    def __str__(self):
+        return f"ID Station: {self.id_station}\n" \
+               f"Coordonnées: {self.coordonnees}\n" \
+               f"Ville: {self.ville}\n" \
+               f"Adresse: {self.adresse}\n" \
+               f"Type de Carburant: {self.type_carburant}\n" \
+               f"Prix du Carburant: {self.prix_carburant} euros par litre\n" \
+               f"Services: {', '.join(self.services)}"  # Affiche les services séparés par une virgule
+
     def ajouter_service(self, nom_service):
         """
         Ajoute un service à la liste des services disponibles à la station.
@@ -74,3 +85,15 @@ class Station:
         Elle peut renvoyer une liste de stations qui correspondent aux préférences spécifiées.
         """
         pass
+
+# Création d'un objet Coordonnees
+coordonnees = Coordonnees(51.789, 2.345)
+
+# Création d'un objet Station
+station = Station(1, 2.345, 51.789, "Bruz", "Rue de la pignouf",
+                  "Essence 95", 1.45, coordonnees)
+station.ajouter_service("Lavage de voiture")
+station.ajouter_service("Réparation mécanique")
+
+# Affichage de la représentation sous forme de chaîne de caractères de l'objet Station
+print(str(station))

@@ -13,3 +13,7 @@ class Station_favorites:
         """
         self._id_utilisateur = id_utilisateur
         self.id_station = id_station
+
+    def __str__(self):
+        return f"ID utilisateur: {self._id_utilisateur}, ID station favorite: {self.id_station}"
+
