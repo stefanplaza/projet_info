@@ -1,3 +1,4 @@
+import unittest
 import math
 
 class Coordonnees:
@@ -25,8 +26,3 @@ class Coordonnees:
         distance = R * c
         
         return distance
-
-
-
-
-
