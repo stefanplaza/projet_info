@@ -85,15 +85,3 @@ class Station:
         Elle peut renvoyer une liste de stations qui correspondent aux préférences spécifiées.
         """
         pass
-
-# Création d'un objet Coordonnees
-coordonnees = Coordonnees(51.789, 2.345)
-
-# Création d'un objet Station
-station = Station(1, 2.345, 51.789, "Bruz", "Rue de la pignouf",
-                  "Essence 95", 1.45, coordonnees)
-station.ajouter_service("Lavage de voiture")
-station.ajouter_service("Réparation mécanique")
-
-# Affichage de la représentation sous forme de chaîne de caractères de l'objet Station
-print(str(station))
