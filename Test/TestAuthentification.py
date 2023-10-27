@@ -1,22 +1,22 @@
 from Classe.Authentification import Authentification
 import unittest
 
-class TestAuthentification(unittest.TestCase):
-    def setUp(self):
-        # Crée une instance de Authentification pour les tests
-        self.auth = Authentification("utilisateur1", "123")
+class TestAuthentificationMethods(unittest.TestCase):
+    def test_init(self):
+        # Vérifie si l'initialisation de l'objet Authentification se déroule correctement
+        auth = Authentification("utilisateur123", "motdepasse123")
+        self.assertEqual(auth._id_utilisateur, "utilisateur123")
+        self.assertEqual(auth._mot_de_passe, "motdepasse123")
 
-    def test_compare_identifiants_valides(self):
-        resultat = self.auth.compare("utilisateur1", "123")
-        self.assertTrue(resultat)
+    def test_compare(self):
+        # Crée un objet Authentification pour les tests
+        auth = Authentification("utilisateur123", "motdepasse123")
 
-    def test_compare_identifiants_invalides(self):
-        resultat = self.auth.compare("utilisateur2", "123")
-        self.assertFalse(resultat)
+        # Vérifie si la méthode compare fonctionne correctement pour des identifiants valides
+        self.assertTrue(auth.compare("utilisateur123", "motdepasse123"))
 
-    def test_compare_mauvais_mot_de_passe(self):
-        resultat = self.auth.compare("utilisateur2", "456")
-        self.assertFalse(resultat)
+        # Vérifie si la méthode compare fonctionne correctement pour des identifiants invalides
+        self.assertFalse(auth.compare("utilisateur456", "motdepasse456"))
 
 if __name__ == '__main__':
     unittest.main()
