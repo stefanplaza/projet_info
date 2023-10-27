@@ -1,9 +1,5 @@
 class Authentification:
-    def __init__(
-        self
-        id_utilisateur,
-        mot_de_passe,
-    ):
+    def __init__(self, id_utilisateur, mot_de_passe):
         """
         Initialise une instance de la classe Authentification avec un nom d'utilisateur et un mot de passe.
 
