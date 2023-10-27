@@ -3,10 +3,26 @@ import math
 
 class Coordonnees:
     def __init__(self, latitude, longitude):
+        """
+        Initialise une instance de la classe Coordonnees avec des coordonnées de latitude et de longitude.
+
+        Args:
+            latitude (float): La latitude en degrés.
+            longitude (float): La longitude en degrés.
+        """
         self.latitude = latitude
         self.longitude = longitude
 
     def dist(self, autre):
+        """
+        Calcule la distance entre deux points géographiques en utilisant la formule de la haversine.
+
+        Args:
+            autre (Coordonnees): Les coordonnées de l'autre point géographique.
+
+        Returns:
+            float: La distance en kilomètres entre les deux points géographiques.
+        """
         # Convertir les latitudes et longitudes de degrés à radians
         lat1, lon1 = math.radians(self.latitude), math.radians(self.longitude)
         lat2, lon2 = math.radians(autre.latitude), math.radians(autre.longitude)
