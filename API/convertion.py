@@ -12,6 +12,5 @@ def adresse_en_coordonnees(adresse):
         return latitude, longitude
     else:
         return None
-
- adresse_en_coordonnees("rue jules vernes, Langueux")
+_adresse_en_coordonnees("rue jules vernes, Langueux")
 
