@@ -16,3 +16,13 @@ class Services:
         """
         self.id_service = id_service
         self.nom_service = nom_service
+    
+    def __str__(self):
+        return f"ID utilisateur: {self._id_utilisateur}, mot de passe : {self._mot_de_passe}"
+
+         """
+        Retourne une représentation sous forme de chaîne de caractères de l'objet Utilisateur.
+
+        Returns:
+            str: Une chaîne de caractères représentant l'ID de l'utilisateur et son mot de passe.
+        """     
