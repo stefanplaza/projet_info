@@ -1,16 +1,12 @@
-# Base de données factice pour stocker les comptes (utilisation de dictionnaires)
-accounts = {}
+import database from
 
-def create_account():
-    username = input("Entrez un nom d'utilisateur : ")
-    password = input("Entrez un mot de passe : ")
-    accounts[username] = password
-    print("Compte créé avec succès.")
-
+class connexion:
 def login():
-    username = input("Nom d'utilisateur : ")
-    password = input("Mot de passe : ")
-    if username in accounts and accounts[username] == password:
+    print("entrez votre identifiant")
+    x=input()
+    print("entrez votre mot de passe")
+    y=input()
+    if x in accounts and accounts[x] == y:
         print("Connexion réussie.")
     else:
         print("Identifiants invalides.")
