@@ -4,13 +4,23 @@ class Coordonnees:
     def __init__(self, latitude, longitude):
         """
         Initialise une instance de la classe Coordonnees avec des coordonnées de latitude et de longitude.
-
+    
         Args:
             latitude (float): La latitude en degrés.
             longitude (float): La longitude en degrés.
         """
         self.latitude = latitude
         self.longitude = longitude
+
+    def __str__(self):
+        return f"ID utilisateur: {self._id_utilisateur}, mot de passe : {self._mot_de_passe}"
+
+         """
+        Retourne une représentation sous forme de chaîne de caractères de l'objet Utilisateur.
+
+        Returns:
+            str: Une chaîne de caractères représentant l'ID de l'utilisateur et son mot de passe.
+        """     
 
     def dist(self, autre):
         """
