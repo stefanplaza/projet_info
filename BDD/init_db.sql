@@ -40,7 +40,7 @@ DROP TABLE IF EXISTS projet.listes;
 CREATE TABLE projet.listes (
     id_liste text PRIMARY KEY,
     id_utilisateur text REFERENCES projet.utilisateur(id_utilisateur),
-    nom_liste text NOT NULL
+    nom_liste text UNIQUE NOT NULL
 );
 
 --------------------------------------------------------------

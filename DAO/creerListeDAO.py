@@ -1,4 +1,5 @@
 from dao.db_connection import DBConnection
+from projet_info.Classe.Liste import Liste
 
 
 class CreerlisteDAO:
@@ -8,21 +9,17 @@ class CreerlisteDAO:
                 cursor.execute(
                     "SELECT COUNT(*)       "
                     "FROM projet.listes             "
-                    "WHERE id_utilisateur = %(id_user)s ",
+                    "WHERE id_utilisateur = %s ",
+                    (id_user,),
                 )
-                {
-                    "id_user": id_user
-                }
-                res = cursor.fetchone()          
+                res = cursor.fetchone()
             if res is not None:
                 return int(res["count"])
             else:
-                return 0  # Si aucune ligne n'est trouvée, retournez 0
+                return 0  # Si aucune liste n'est trouvée, retournez 0
 
-    def add_liste(self, id_user, nom_liste) -> bool:
-        id_liste = self.taille_table() + 1
-        id_utilisateur = self.id_user
-        nom_liste = self.nom_liste
+    def add_liste(self, id_user, nom_liste) -> Liste:
+        id_liste = self.taille_table(id_user) + 1
         with DBConnection().connection as connection:
             with connection.cursor() as cursor:
                 cursor.execute(
@@ -32,12 +29,10 @@ class CreerlisteDAO:
                     "RETURNING id_liste, id_utilisateur, nom_liste                  ",
                     {
                         "id_liste": id_liste,
-                        "id_utilisateur": id_utilisateur,
+                        "id_utilisateur": id_user,
                         "nom_liste": nom_liste
                     },
                 )
                 res = cursor.fetchone()
-                if res is None:
-                    return False
-                else:
-                    return True
+                element = Liste(res["id_liste"], res["id_utilisateur"], res["nom_liste"])
+                return element
