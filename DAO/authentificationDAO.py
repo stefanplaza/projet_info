@@ -2,7 +2,7 @@ from dao.db_connection import DBConnection
 
 
 class AuthentificationDAO:
-    def verification(self, id_user, mdp):
+    def verification(self, id_user, mdp) -> bool:
         with DBConnection().connection as connection:
             with connection.cursor() as cursor:
                 cursor.execute(
