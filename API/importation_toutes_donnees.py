@@ -87,3 +87,49 @@ def trouver_stations_par_filtres (n : int, services_recherches: list, carburants
         print("Le contenu extrait n'est pas un fichier XML valide.")
 
 trouver_stations_par_filtres(5, [],["Gazole"], Coordonnees(0,48.6428477,2.7143162))
+
+def trouver_informations_par_id(id_station: int):
+    url = "https://donnees.roulez-eco.fr/opendata/instantane"
+
+    try:
+        response = requests.get(url)
+
+        if response.status_code == 200:
+            zip_content = response.content
+
+            with zipfile.ZipFile(io.BytesIO(zip_content)) as zip_file:
+                xml_file_name = "PrixCarburants_instantane.xml"
+
+                if xml_file_name in zip_file.namelist():
+                    xml_content = zip_file.read(xml_file_name).decode("latin-1")
+                    root = ET.fromstring(xml_content)
+
+                    # Recherche de la station par son identifiant
+                    pdv_element = root.find(".//pdv[@id='{}']".format(id_station))
+
+                    if pdv_element is not None:
+                        # Récupérez les informations de la station
+                        station_info = {
+                            'id': pdv_element.get('id'),
+                            'latitude': float(pdv_element.get('latitude')) / 100000,
+                            'longitude': float(pdv_element.get('longitude')) / 100000,
+                            'cp': pdv_element.get('cp'),
+                        
+                        }
+
+                        return station_info
+                    else:
+                        print("Aucune station trouvée avec l'identifiant :", id_station)
+
+        else:
+            print("La requête a échoué avec le code de statut :", response.status_code)
+
+    except requests.exceptions.RequestException as e:
+        print("Erreur de requête :", e)
+    except ET.ParseError:
+        print("Le contenu extrait n'est pas un fichier XML valide.")
+
+id_station_recherche = 74800004 
+resultat = trouver_informations_par_id(id_station_recherche)
+if resultat:
+    print("Informations de la station avec l'identifiant", id_station_recherche, ":", resultat)
