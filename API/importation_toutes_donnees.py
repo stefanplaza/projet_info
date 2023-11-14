@@ -4,6 +4,7 @@ import io
 import xml.etree.ElementTree as ET
 from Classe.Coordonnees import Coordonnees
 from helper import trier, selectionner_n_premiers
+import json
 
 #faire plusieurs fonctions selon les cas : si il met pas de filtres, je peux quand même gérer 
 #faire deux fonctions (une pour filtrer, une pour rechercher par id)
@@ -114,22 +115,25 @@ def trouver_informations_par_id(id_station: int):
                             'latitude': float(pdv_element.get('latitude')) / 100000,
                             'longitude': float(pdv_element.get('longitude')) / 100000,
                             'cp': pdv_element.get('cp'),
-                        
                         }
 
-                        return station_info
+                        # Convertissez le dictionnaire en une chaîne JSON
+                        station_info_json = json.dumps(station_info, indent=2)
+                        return station_info_json
                     else:
-                        print("Aucune station trouvée avec l'identifiant :", id_station)
-
+                        return None
+        
         else:
-            print("La requête a échoué avec le code de statut :", response.status_code)
+            return json.dumps({"error": "La requête a échoué avec le code de statut {}".format(response.status_code)})
 
     except requests.exceptions.RequestException as e:
-        print("Erreur de requête :", e)
+        return json.dumps({"error": "Erreur de requête : {}".format(e)})
     except ET.ParseError:
-        print("Le contenu extrait n'est pas un fichier XML valide.")
+        return json.dumps({"error": "Le contenu extrait n'est pas un fichier XML valide."})
 
 id_station_recherche = 74800004 
 resultat = trouver_informations_par_id(id_station_recherche)
 if resultat:
-    print("Informations de la station avec l'identifiant", id_station_recherche, ":", resultat)
+    print(resultat)
+else:
+    print("Aucune station trouvée avec l'identifiant", id_station_recherche)
