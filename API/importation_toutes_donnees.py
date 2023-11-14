@@ -11,7 +11,7 @@ url = "https://donnees.roulez-eco.fr/opendata/instantane"
 #faire plusieurs fonctions selon les cas : si il met pas de filtres, je peux quand même gérer 
 #faire deux fonctions (une pour filtrer, une pour rechercher par id)
 
-def trouver_stations_par_filtres (n, services_recherches, carburants_recherches, coor_utilisateur):
+def trouver_stations_par_filtres (n : int, services_recherches: list, carburants_recherches : list, coor_utilisateur: Coordonnees):
     url = "https://donnees.roulez-eco.fr/opendata/instantane"
 
     try:
