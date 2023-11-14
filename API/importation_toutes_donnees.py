@@ -3,8 +3,14 @@ import zipfile
 import io
 import xml.etree.ElementTree as ET
 from Classe.Coordonnees import Coordonnees
+from helper import trier
 
 url = "https://donnees.roulez-eco.fr/opendata/instantane"
+
+
+#faire plusieurs fonctions selon les cas : si il met pas de filtres, je peux quand même gérer 
+#faire deux fonctions (une pour filtrer, une pour rechercher par id)
+
 
 try:
     response = requests.get(url)
@@ -61,12 +67,6 @@ try:
                 #print(dist)
                
                 print(len(coor_info))
-
-                def trier(liste : list[list]):
-                    liste_triee = sorted(liste, key=lambda x: x[1])
-                    return liste_triee
-
-                    print(liste_triee)
                
                 dist_triee = trier(dist)
 
