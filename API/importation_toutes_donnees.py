@@ -14,6 +14,7 @@ url = "https://donnees.roulez-eco.fr/opendata/instantane"
 def trouver_stations_par_filtres (n : int, services_recherches: list, carburants_recherches : list, coor_utilisateur: Coordonnees):
     #pour les services, mettre liste vide si aucun filtre dessus
     #pour les carburants, tous les mettre 
+    #on pourra rajouter aussi le paramètre horaire après 
     url = "https://donnees.roulez-eco.fr/opendata/instantane"
 
     try:
