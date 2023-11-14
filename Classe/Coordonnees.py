@@ -30,8 +30,3 @@ class Coordonnees:
         distance = R * c
        
         return [self.id_station ,distance]
-   
-#####test
-coor = Coordonnees(562,62,6)
-coor2= Coordonnees(8498,62.1,6)
-print(coor.dist(coor2))
