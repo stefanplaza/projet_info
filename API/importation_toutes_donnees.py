@@ -5,15 +5,12 @@ import xml.etree.ElementTree as ET
 from Classe.Coordonnees import Coordonnees
 from helper import trier, selectionner_n_premiers
 
-url = "https://donnees.roulez-eco.fr/opendata/instantane"
-
-
 #faire plusieurs fonctions selon les cas : si il met pas de filtres, je peux quand même gérer 
 #faire deux fonctions (une pour filtrer, une pour rechercher par id)
 
 def trouver_stations_par_filtres (n : int, services_recherches: list, carburants_recherches : list, coor_utilisateur: Coordonnees):
     #pour les services, mettre liste vide si aucun filtre dessus
-    #pour les carburants, tous les mettre 
+    #pour les carburants, tous les mettre ["Gazole", "E10", "GPLc","SP98","SP95","E85"]
     #on pourra rajouter aussi le paramètre horaire après 
     url = "https://donnees.roulez-eco.fr/opendata/instantane"
 
@@ -89,4 +86,4 @@ def trouver_stations_par_filtres (n : int, services_recherches: list, carburants
     except ET.ParseError:
         print("Le contenu extrait n'est pas un fichier XML valide.")
 
-trouver_stations_par_filtres(5, ["Station de gonflage"],["Gazole"], Coordonnees(0,48.6428477,2.7143162))
+trouver_stations_par_filtres(5, [],["Gazole"], Coordonnees(0,48.6428477,2.7143162))
