@@ -18,18 +18,18 @@ class AjouterstationDAO:
                 res = cursor.fetchone()
                 return [res["id_liste"],res["id_stations"]]
 
-    def creer_station(self, id_station, adresse, ville):
-        with DBConnection().connection as connection:
-            with connection.cursor() as cursor:
-                cursor.execute(
-                    "INSERT INTO projet.stations (id_stations, adresse, ville)"
-                    "VALUES                                                  "
-                    "(%(id_stations)s, %(adresse)s, %(ville)s)              ",
-                    # "RETURNING id_station, adresse, ville                 ",
-                    {
-                        "id_stations": id_station,
-                        "adresse": adresse,
-                        "ville": ville
-                    },
-                )
+    # def creer_station(self, id_station, adresse, ville):
+    #     with DBConnection().connection as connection:
+    #         with connection.cursor() as cursor:
+    #             cursor.execute(
+    #                 "INSERT INTO projet.stations (id_stations, adresse, ville)"
+    #                 "VALUES                                                  "
+    #                 "(%(id_stations)s, %(adresse)s, %(ville)s)              ",
+    #                 # "RETURNING id_station, adresse, ville                 ",
+    #                 {
+    #                     "id_stations": id_station,
+    #                     "adresse": adresse,
+    #                     "ville": ville
+    #                 },
+    #             )
                 # res = cursor.fetchone()

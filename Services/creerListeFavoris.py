@@ -1,5 +1,6 @@
 from projet_info.DAO.creerListeDAO import CreerlisteDAO
-from projet_info.DAO.ajouterstationDAO import AjouterstationDAO
+# from projet_info.DAO.ajouterstationDAO import AjouterstationDAO
+
 
 class Creerliste:
     def ajouter_liste(self, id_utilisateur, nom_liste): 
@@ -18,10 +19,10 @@ class Creerliste:
                 nom_liste = input("Entrez un nouveau nom: ")
             else:
                 if liste is not None:
-                        print("-----------------------------------")
-                        print("Votre liste '{}' a été créée.".format(liste.nom_liste))
-                        print("-----------------------------------")
-                        operation_reussie = True
+                    print("-----------------------------------")
+                    print("Votre liste '{}' a été créée.".format(liste.nom_liste))
+                    print("-----------------------------------")
+                    operation_reussie = True
 
 
 if __name__ == "__main__":
