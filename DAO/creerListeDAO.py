@@ -1,4 +1,4 @@
-from dao.db_connection import DBConnection
+from projet_info.DAO.db_connection import DBConnection
 from projet_info.Classe.Liste import Liste
 #
 
