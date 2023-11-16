@@ -137,3 +137,10 @@ if resultat:
     print(resultat)
 else:
     print("Aucune station trouvée avec l'identifiant", id_station_recherche)
+
+def info_stations_preferees(liste : list):
+    reponse = []
+    for x in liste :
+        y=trouver_informations_par_id(x)
+        reponse.append(y)
+    return reponse 
