@@ -1,32 +1,24 @@
 from InquirerPy import inquirer
 from view.abstract_view import AbstractView
-from view.session_view import Session
-from projet_info.DAO.inscriptionDAO import DAO.inscriptionDAO
-from ListesFavoritesView import ListesFavoritesView  # Assurez-vous de corriger le chemin d'importation
+from projet_info.DAO.creerListeDAO import CreerlisteDAO
 
-class MenuView(AbstractView):
+class ListesFavoritesView(AbstractView):
     def __init__(self):
-        # ... Vos autres méthodes d'initialisation restent inchangées
+        self.__questions = [
+            {
+                "type": "input",
+                "name": "nom_liste",
+                "message": "Entrez le nom de votre nouvelle liste: ",
+            }
+        ]
+
+    def display_info(self):
+        print("Création d'une nouvelle liste de stations favorites.")
 
     def make_choice(self):
-        while True:
-            answers = inquirer.prompt(self.__questions)
-            choice = answers["choice"]
+        answers = inquirer.prompt(self.__questions)
+        nom_liste = answers["nom_liste"]
+        id_utilisateur = "ID_UTILISATEUR_ACTUEL"  # Remplacez par l'ID de l'utilisateur actuel
 
-            if choice == "Effectuer une recherche":
-                # Ajoutez le code pour l'option "Effectuer une recherche"
-                pass
-            elif choice == "Consulter mes stations favorites":
-                # Ajoutez le code pour l'option "Consulter mes stations favorites"
-                pass
-            elif choice == "Modifier/Supprimer mes stations favorites":
-                # Ajoutez le code pour l'option "Modifier/Supprimer mes stations favorites"
-                pass
-            elif choice == "Créer une nouvelle liste de stations favorites":
-                listes_favorites_view = ListesFavoritesView()
-                listes_favorites_view.display_info()
-                listes_favorites_view.make_choice()
-            elif choice == "Déconnexion":
-                Session().clear_session()
-                from view.connexion_view import ConnexionView
-                return ConnexionView()
+        creer_liste = Creerliste()
+        creer_liste.ajouter_liste(id_utilisateur, nom_liste)
