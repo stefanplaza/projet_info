@@ -3,14 +3,12 @@ from projet_info.Classe.Liste import Liste
 
 
 class CreerlisteDAO:
-    def taille_table(self, id_user) -> int: # La fonction taille_table est importante 
-        with DBConnection().connection as connection: # pour affecter à chaque nouveau
-            with connection.cursor() as cursor: # objet un "id" différent
+    def taille_table(self, id_user) -> int:  # La fonction taille_table est importante 
+        with DBConnection().connection as connection:  # pour affecter à chaque nouveau
+            with connection.cursor() as cursor:  # objet un "id" différent
                 cursor.execute(
                     "SELECT COUNT(*)       "
-                    "FROM projet.listes             "
-                    "WHERE id_utilisateur = %s ",
-                    (id_user,),
+                    "FROM projet.listes             ",
                 )
                 res = cursor.fetchone()
             if res is not None:
