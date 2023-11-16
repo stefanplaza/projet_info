@@ -1,7 +1,7 @@
 from InquirerPy import prompt
 from view.abstract_view import AbstractView
 from view.session_view import Session
-from projet_info.DAO.InscriptionDAO import InscriptionDAO
+from DAO.inscriptionDAO import InscriptionDAO
 
 class InscriptionView(AbstractView):
     def __init__(self):
