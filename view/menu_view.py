@@ -1,7 +1,11 @@
+import sys
+sys.path.insert(0, '\\filer-eleves2\id2315\projet_info\projet_info')
+from projet_info.DAO.InscriptionDAO import InscriptionDAO
+
 from InquirerPy import inquirer
-from view.abstract_view import AbstractView
-from view.session_view import Session
-from projet_info.DAO.InscriptionDAO import DAO.InscriptionDAO
+from abstract_view import AbstractView
+from session_view import Session
+from projet_info.DAO.InscriptionDAO import InscriptionDAO
 from projet_info.DAO.MenuDAO import MenuDAO  # Créez votre propre DAO pour gérer les fonctionnalités du menu
 
 class MenuView(AbstractView):

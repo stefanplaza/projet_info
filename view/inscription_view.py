@@ -1,6 +1,6 @@
 from InquirerPy import prompt
-from view.abstract_view import AbstractView
-from view.session_view import Session
+from abstract_view import AbstractView
+from session_view import Session
 from DAO.inscriptionDAO import InscriptionDAO
 
 class InscriptionView(AbstractView):
