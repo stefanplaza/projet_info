@@ -1,6 +1,6 @@
-#from utils.singleton import Singleton
-from DAO.db_connection import DBConnection
-from Classe.Utilisateur import Utilisateur
+from utils.singleton import Singleton
+from projet_info.DAO.db_connection import DBConnection
+from projet_info.Classe.Utilisateur import Utilisateur
 
 
 class InscriptionDAO(metaclass=Singleton):
