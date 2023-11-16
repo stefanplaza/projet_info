@@ -1,5 +1,5 @@
 from projet_info.DAO.creerListeDAO import CreerlisteDAO
-
+from projet_info.DAO.ajouterstationDAO import AjouterstationDAO
 
 class Creerliste:
     def ajouter_liste(self, id_utilisateur, nom_liste): 
@@ -25,6 +25,7 @@ class Creerliste:
 
 
 if __name__ == "__main__":
-    id = input("id: ")
+    id = input("Votre id: ")
     nom = input("nom: ")
     Creerliste().ajouter_liste(id, nom)
+    # AjouterstationDAO().creer_station("43363365", "Italy", "Versailles")

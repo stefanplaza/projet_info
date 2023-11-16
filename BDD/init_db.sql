@@ -1,3 +1,4 @@
+-- Active: 1699913521992@@sgbd-eleves.domensai.ecole@5432@id2377
 DROP SCHEMA IF EXISTS projet CASCADE;
 CREATE SCHEMA projet;
 
@@ -7,15 +8,9 @@ CREATE SCHEMA projet;
 
 DROP TABLE IF EXISTS projet.stations CASCADE ;
 CREATE TABLE projet.stations (
-    id_station text PRIMARY KEY,
-    longitude text NOT NULL,
-    latitude text NOT NULL,
+    id_stations text PRIMARY KEY,
     adresse text NOT NULL,
-    ville text NOT NULL,
-    services text,
-    type_carburant text,
-    prix_carburant text, 
-    coordonnees text NOT NULL
+    ville text NOT NULL
 );
 
 
@@ -23,7 +18,7 @@ CREATE TABLE projet.stations (
 -- Les services
 --------------------------------------------------------------
 
-DROP TABLE IF EXISTS projet.utilisateur;
+DROP TABLE IF EXISTS projet.utilisateur CASCADE ;
 
 CREATE TABLE projet.utilisateur (
     id_utilisateur text PRIMARY KEY,
@@ -35,7 +30,7 @@ CREATE TABLE projet.utilisateur (
 -- Les listes des stations
 --------------------------------------------------------------
 
-DROP TABLE IF EXISTS projet.listes;
+DROP TABLE IF EXISTS projet.listes CASCADE ;
 
 CREATE TABLE projet.listes (
     id_liste text PRIMARY KEY,
@@ -48,7 +43,7 @@ CREATE TABLE projet.listes (
 --------------------------------------------------------------
 
 
-DROP TABLE IF EXISTS projet.contenu_liste;
+DROP TABLE IF EXISTS projet.contenu_liste CASCADE ;
 
 CREATE TABLE projet.contenu_liste (
     id_liste text REFERENCES projet.listes(id_liste),

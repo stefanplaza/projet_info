@@ -1,12 +1,12 @@
 from projet_info.DAO.inscriptionDAO import InscriptionDAO
-from projet_info.Classe.Utilisateur import Utilisateur
+# from projet_info.Classe.Utilisateur import Utilisateur
 
 
 class Inscription:
     def inscrire(self, nom_utilsateur,  mdp):
         inscrit = InscriptionDAO().add_user(nom_utilsateur, mdp)
         print("-----------------------------------")
-        print("Votre identifiants\nID: {}\nNom: {}\nPassword: {}.".format(inscrit._id_utilisateur, inscrit._nom_utilisateur, inscrit._mot_de_passe))
+        print("Bienvenu.\nVos identifiants\nID: {}\nNom: {}\nPassword: {}.".format(inscrit._id_utilisateur, inscrit._nom_utilisateur, inscrit._mot_de_passe))
         print("-----------------------------------")
 
 
