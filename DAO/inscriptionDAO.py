@@ -1,4 +1,4 @@
-from utils.singleton import Singleton
+from projet_info.utils.singleton import Singleton
 from projet_info.DAO.db_connection import DBConnection
 from projet_info.Classe.Utilisateur import Utilisateur
 
