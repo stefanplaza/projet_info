@@ -4,11 +4,11 @@ import io
 import xml.etree.ElementTree as ET
 from Classe.Coordonnees import Coordonnees
 from helper import trier, selectionner_n_premiers
+#from flask import jsonify
 import json
 
 #faire plusieurs fonctions selon les cas : si il met pas de filtres, je peux quand même gérer 
-#faire deux fonctions (une pour filtrer, une pour rechercher par id)
-
+#découper en 2 méthodes je pense, c'est long là 
 def trouver_stations_par_filtres (n : int, services_recherches: list, carburants_recherches : list, coor_utilisateur: Coordonnees):
     #pour les services, mettre liste vide si aucun filtre dessus
     #pour les carburants, tous les mettre ["Gazole", "E10", "GPLc","SP98","SP95","E85"]
@@ -89,6 +89,8 @@ def trouver_stations_par_filtres (n : int, services_recherches: list, carburants
 
 trouver_stations_par_filtres(5, [],["Gazole"], Coordonnees(0,48.6428477,2.7143162))
 
+
+
 def trouver_informations_par_id(id_station: int):
     url = "https://donnees.roulez-eco.fr/opendata/instantane"
 
@@ -109,27 +111,43 @@ def trouver_informations_par_id(id_station: int):
                     pdv_element = root.find(".//pdv[@id='{}']".format(id_station))
 
                     if pdv_element is not None:
-                        # Récupérez les informations de la station
+                        # Récupérez les informations de la station directement comme un dictionnaire
                         station_info = {
                             'id': pdv_element.get('id'),
                             'latitude': float(pdv_element.get('latitude')) / 100000,
                             'longitude': float(pdv_element.get('longitude')) / 100000,
                             'cp': pdv_element.get('cp'),
                         }
-
-                        # Convertissez le dictionnaire en une chaîne JSON
-                        station_info_json = json.dumps(station_info, indent=2)
-                        return station_info_json
+                        return station_info
                     else:
                         return None
-        
+                else:
+                    return {"error": "Le fichier XML attendu n'est pas présent dans l'archive."}
+
         else:
-            return json.dumps({"error": "La requête a échoué avec le code de statut {}".format(response.status_code)})
+            return {"error": "La requête a échoué avec le code de statut {}".format(response.status_code)}
 
     except requests.exceptions.RequestException as e:
-        return json.dumps({"error": "Erreur de requête : {}".format(e)})
+        # Loggez l'erreur
+        print(f"Erreur de requête : {e}")
+        return {"error": "Erreur de requête : {}".format(e)}
+
     except ET.ParseError:
-        return json.dumps({"error": "Le contenu extrait n'est pas un fichier XML valide."})
+        return {"error": "Le contenu extrait n'est pas un fichier XML valide."}
+
+
+def info_stations_preferees(liste: list):
+    resultats = []
+
+    for id_station in liste:
+        informations_station = trouver_informations_par_id(id_station)
+
+        if informations_station:
+            resultats.append(informations_station)
+
+    # Utilisez jsonify pour convertir la liste de dictionnaires en JSON
+    return json.dumps(resultats, indent=2)
+
 
 id_station_recherche = 74800004 
 resultat = trouver_informations_par_id(id_station_recherche)
@@ -138,9 +156,5 @@ if resultat:
 else:
     print("Aucune station trouvée avec l'identifiant", id_station_recherche)
 
-def info_stations_preferees(liste : list):
-    reponse = []
-    for x in liste :
-        y=trouver_informations_par_id(x)
-        reponse.append(y)
-    return reponse 
+liste_station = [74800004, 77390005,77390003 ]
+print(info_stations_preferees(liste_station))
